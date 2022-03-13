@@ -1,19 +1,8 @@
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { mapState } from 'vuex'
+<script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
-
-
-export default defineComponent({
-  computed: {
-    ...mapState(['user'])
-  },
-  components: { HelloWorld }
-})
 </script>
 
 <template>
-  <pre>{{ user }}</pre>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
