@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Auth from '../components/layouts/Auth.vue';
 import Dashboard from '../views/Dashboard.vue';
 import Layout from '../components/layouts/Layout.vue';
 import Login from '../views/Login.vue';
@@ -19,14 +20,22 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    name: 'Login',
-    path: '/login',
-    component: Login,
-  },
-  {
-    name: 'Register',
-    path: '/register',
-    component: Register,
+    name: 'Auth',
+    path: '/auth',
+    redirect: '/login',
+    component: Auth,
+    children: [
+      {
+        name: 'Login',
+        path: '/login',
+        component: Login,
+      },
+      {
+        name: 'Register',
+        path: '/register',
+        component: Register,
+      },
+    ],
   },
 ];
 

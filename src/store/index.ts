@@ -24,7 +24,7 @@ export const store = createStore<StoreApp>({
   state: {
     user: {
       data: null,
-      token: 'null',
+      token: null,
     },
   },
   getters: {},
