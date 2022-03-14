@@ -1,9 +1,7 @@
 <template>
-    <PageComponent title="Surveys">
-        All surveys
-    </PageComponent>
+  <PageComponent title="Surveys"> All surveys </PageComponent>
 </template>
 
 <script setup lang="ts">
-import PageComponent from '../components/PageComponent.vue';
+  import PageComponent from '../components/PageComponent.vue';
 </script>
