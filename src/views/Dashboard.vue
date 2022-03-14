@@ -1,27 +1,9 @@
 <template>
-<header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-    </div>
-</header>
-<main>
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <!-- Replace with your content -->
-    <div class="px-4 py-6 sm:px-0">
+    <PageComponent title="Dashboard">
         Contenido aqui
-    </div>
-    <!-- /End replace -->
-    </div>
-</main>
+    </PageComponent>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-    name: 'Dashboard',
-    setup() {
-
-    },
-})
+<script setup lang="ts">
+import PageComponent from '../components/PageComponent.vue';
 </script>
