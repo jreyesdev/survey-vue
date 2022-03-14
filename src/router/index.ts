@@ -24,6 +24,7 @@ const routes: RouteRecordRaw[] = [
     path: '/auth',
     redirect: '/login',
     component: Auth,
+    meta: { isGuest: true },
     children: [
       {
         name: 'Login',
@@ -47,10 +48,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({ name: 'Login' });
-  } else if (
-    store.state.user.token &&
-    (to.name === 'Login' || to.name === 'Register')
-  ) {
+  } else if (store.state.user.token && to.meta.isGuest) {
     next({ name: 'Dashboard' });
   } else {
     next();
