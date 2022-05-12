@@ -17,6 +17,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.32",
     "@vitejs/plugin-vue": "^2.2.0",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
