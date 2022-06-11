@@ -57,6 +57,15 @@ export const store = createStore<StoreApp>({
         throw e;
       }
     },
+    async logout({ commit }) {
+      try {
+        const { data } = await axiosClient.post('/logout');
+        commit('logout');
+        return data;
+      } catch (e) {
+        throw e;
+      }
+    },
   },
   modules: {},
   mutations: {

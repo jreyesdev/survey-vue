@@ -170,12 +170,16 @@
       XIcon,
     },
     setup() {
-      const { state, commit } = useStore();
+      const { state, commit, dispatch } = useStore();
       const router = useRouter();
 
-      function logout() {
-        commit('logout');
-        router.push({ name: 'Login' });
+      async function logout() {
+        try {
+          await dispatch('logout');
+          router.push({ name: 'Login' });
+        } catch (e) {
+          console.log('Logout', e);
+        }
       }
       return {
         user: computed(() => state.user.data),
