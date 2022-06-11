@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { store } from '../store';
 import Auth from '../components/layouts/Auth.vue';
 import Dashboard from '../views/Dashboard.vue';
 import Layout from '../components/layouts/Layout.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import Surveys from '../views/Surveys.vue';
-import { store } from '../store';
+import SurveyView from '../views/SurveyView.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -17,6 +18,8 @@ const routes: RouteRecordRaw[] = [
     children: [
       { name: 'Dashboard', path: '/dashboard', component: Dashboard },
       { name: 'Surveys', path: '/surveys', component: Surveys },
+      { name: 'SurveyCreate', path: '/surveys/create', component: SurveyView },
+      { name: 'SurveyView', path: '/surveys/:id', component: SurveyView },
     ],
   },
   {
