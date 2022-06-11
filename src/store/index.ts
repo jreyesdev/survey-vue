@@ -1,6 +1,8 @@
 import { InjectionKey } from 'vue';
 import { createStore, Store, useStore as baseStore } from 'vuex';
-import { UserFormRegister } from '../interfaces/UserInterface';
+
+import { UserFormLogin, UserFormRegister } from '../interfaces/UserInterface';
+import axiosClient from '../axios';
 
 type User = {
   name?: string;
@@ -39,18 +41,16 @@ export const store = createStore<StoreApp>({
   actions: {
     async register({ commit }, user: UserFormRegister) {
       try {
-        const resp = await fetch(
-          'http://survey-api-laravel.test/api/register',
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            method: 'POST',
-            body: JSON.stringify(user),
-          }
-        );
-        const data = await resp.json();
+        const { data } = await axiosClient.post('/register', user);
+        commit('setUser', data);
+        return data;
+      } catch (e) {
+        throw e;
+      }
+    },
+    async login({ commit }, user: UserFormLogin) {
+      try {
+        const { data } = await axiosClient.post('/login', user);
         commit('setUser', data);
         return data;
       } catch (e) {
@@ -63,10 +63,9 @@ export const store = createStore<StoreApp>({
     logout: (s) => {
       s.user.data = {};
       s.user.token = null;
+      sessionStorage.removeItem('TOKEN');
     },
     setUser: (state, response) => {
-      // Validar estatus respuesta
-      console.log('userData', response);
       state.user.data = response.user;
       state.user.token = response.token;
       sessionStorage.setItem('TOKEN', response.token);

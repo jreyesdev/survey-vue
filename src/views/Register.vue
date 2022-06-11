@@ -101,10 +101,10 @@
   import { store } from '../store';
 
   interface UserFormRegister {
-    name: string | null;
-    email: string | null;
-    password: string | null;
-    password_confirmation: string | null;
+    name?: string;
+    email?: string;
+    password?: string;
+    password_confirmation?: string;
   }
 
   const router = useRouter();
@@ -119,7 +119,7 @@
   async function register(e) {
     e.preventDefault();
     try {
-      const resp = store.dispatch('register', user);
+      const resp = await store.dispatch('register', user);
       router.push({
         name: 'Dashboard',
       });
