@@ -4,6 +4,7 @@ import { createStore, Store, useStore as baseStore } from 'vuex';
 import { UserFormLogin, UserFormRegister } from '../interfaces/UserInterface';
 import axiosClient from '../axios';
 import { Survey } from '../interfaces/SurveyInterface';
+import { TypeQuestion } from '../interfaces/QuestionInterface';
 
 export type User = {
   name: string;
@@ -19,6 +20,7 @@ export type UserAuth = {
 export type StoreApp = {
   user: UserAuth;
   surveys: Survey[] | [];
+  questionTypes: TypeQuestion[];
 };
 
 export const key: InjectionKey<Store<StoreApp>> = Symbol();
@@ -33,6 +35,7 @@ export const store = createStore<StoreApp>({
       data: {},
       token: sessionStorage.getItem('TOKEN'),
     },
+    questionTypes: ['checkbox', 'radio', 'select', 'text'],
     surveys: [
       {
         id: 1,
