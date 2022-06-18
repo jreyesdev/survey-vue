@@ -1,3 +1,5 @@
+import { ErrorResponseApi } from './ErrorResponseApiInterface';
+
 export interface UserFormRegister {
   name: string | null;
   email: string | null;
@@ -10,3 +12,7 @@ export interface UserFormLogin {
   password: string | null;
   remember: boolean;
 }
+
+export type ErrorUserLogin = ErrorResponseApi<UserFormLogin>;
+
+export type ErrorUserRegister = ErrorResponseApi<UserFormRegister>;
