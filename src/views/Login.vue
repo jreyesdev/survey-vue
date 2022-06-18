@@ -110,36 +110,4 @@
   </form>
 </template>
 
-<script setup lang="ts">
-  import { LockClosedIcon } from '@heroicons/vue/solid';
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { store } from '../store';
-
-  interface UserFormLogin {
-    email?: string;
-    password?: string;
-    remember: boolean;
-  }
-
-  const router = useRouter();
-  let errors = ref('');
-
-  const user: UserFormLogin = {
-    email: '',
-    password: '',
-    remember: false,
-  };
-
-  async function login(e) {
-    e.preventDefault();
-    try {
-      const resp = await store.dispatch('login', user);
-      router.push({
-        name: 'Dashboard',
-      });
-    } catch (e) {
-      errors.value = e.response.data.errors;
-    }
-  }
-</script>
+<script src="./Login.ts"></script>

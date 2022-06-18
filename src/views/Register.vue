@@ -123,38 +123,4 @@
   </form>
 </template>
 
-<script setup lang="ts">
-  import { LockClosedIcon } from '@heroicons/vue/solid';
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { store } from '../store';
-
-  interface UserFormRegister {
-    name?: string;
-    email?: string;
-    password?: string;
-    password_confirmation?: string;
-  }
-
-  const router = useRouter();
-  let errors = ref('');
-
-  const user: UserFormRegister = {
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-  };
-
-  async function register(e) {
-    e.preventDefault();
-    try {
-      const resp = await store.dispatch('register', user);
-      router.push({
-        name: 'Dashboard',
-      });
-    } catch (e) {
-      errors.value = e.response.data.errors;
-    }
-  }
-</script>
+<script src="./Register.ts"></script>
