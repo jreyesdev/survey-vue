@@ -27,3 +27,8 @@ export interface UserFormLogin {
 export type ErrorUserLogin = ErrorResponseApi<UserFormLogin>;
 
 export type ErrorUserRegister = ErrorResponseApi<UserFormRegister>;
+
+export interface ResponseAuthUser {
+  user: User;
+  token: string;
+}
