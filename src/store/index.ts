@@ -2,6 +2,7 @@ import { InjectionKey } from 'vue';
 import { createStore, Store, useStore as baseStore } from 'vuex';
 
 import actions from './actions';
+import mutations from './mutations';
 
 import { Survey } from '../interfaces/SurveyInterface';
 import { TypeQuestion } from '../interfaces/QuestionInterface';
@@ -223,24 +224,5 @@ export const store = createStore<StoreApp>({
   getters: {},
   actions,
   modules: {},
-  mutations: {
-    // Survey
-    saveSurvey: (s, survey: Survey) => {
-      s.surveys = [...s.surveys, survey];
-    },
-    updateSurvey: (s, survey: Survey) => {
-      s.surveys = s.surveys.map((su) => (su.id === survey.id ? survey : su));
-    },
-    // Auth
-    logout: (s) => {
-      s.user.data = {};
-      s.user.token = null;
-      sessionStorage.removeItem('TOKEN');
-    },
-    setUser: (state, response) => {
-      state.user.data = response.user;
-      state.user.token = response.token;
-      sessionStorage.setItem('TOKEN', response.token);
-    },
-  },
+  mutations,
 });
