@@ -1,21 +1,11 @@
 import { InjectionKey } from 'vue';
 import { createStore, Store, useStore as baseStore } from 'vuex';
 
-import { UserFormLogin, UserFormRegister } from '../interfaces/UserInterface';
-import axiosClient from '../axios';
+import actions from './actions';
+
 import { Survey } from '../interfaces/SurveyInterface';
 import { TypeQuestion } from '../interfaces/QuestionInterface';
-
-export type User = {
-  name: string;
-  email: string;
-  imageUrl: string;
-};
-
-export type UserAuth = {
-  data: User | {};
-  token: string | null;
-};
+import { UserAuth } from '../interfaces/UserInterface';
 
 export type StoreApp = {
   user: UserAuth;
@@ -231,37 +221,17 @@ export const store = createStore<StoreApp>({
     ],
   },
   getters: {},
-  actions: {
-    async register({ commit }, user: UserFormRegister) {
-      try {
-        const { data } = await axiosClient.post('/register', user);
-        commit('setUser', data);
-        return data;
-      } catch (e) {
-        throw e;
-      }
-    },
-    async login({ commit }, user: UserFormLogin) {
-      try {
-        const { data } = await axiosClient.post('/login', user);
-        commit('setUser', data);
-        return data;
-      } catch (e) {
-        throw e;
-      }
-    },
-    async logout({ commit }) {
-      try {
-        const { data } = await axiosClient.post('/logout');
-        commit('logout');
-        return data;
-      } catch (e) {
-        throw e;
-      }
-    },
-  },
+  actions,
   modules: {},
   mutations: {
+    // Survey
+    saveSurvey: (s, survey: Survey) => {
+      s.surveys = [...s.surveys, survey];
+    },
+    updateSurvey: (s, survey: Survey) => {
+      s.surveys = s.surveys.map((su) => (su.id === survey.id ? survey : su));
+    },
+    // Auth
     logout: (s) => {
       s.user.data = {};
       s.user.token = null;

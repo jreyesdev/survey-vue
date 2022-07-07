@@ -1,5 +1,16 @@
 import { ErrorResponseApi } from './ErrorResponseApiInterface';
 
+export type User = {
+  name: string;
+  email: string;
+  imageUrl: string;
+};
+
+export type UserAuth = {
+  data: User | {};
+  token: string | null;
+};
+
 export interface UserFormRegister {
   name: string | null;
   email: string | null;
