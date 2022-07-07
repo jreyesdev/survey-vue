@@ -179,7 +179,9 @@ export const store = createStore<StoreApp>({
             type: 'text',
             question: 'What do you think about TheCodeholic channel?',
             description: 'Write your honest opinion. Everything is anonymous.',
-            data: null,
+            data: {
+              options: [],
+            },
           },
         ],
       },

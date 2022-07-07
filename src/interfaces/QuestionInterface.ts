@@ -3,14 +3,14 @@ export interface QuestionSurvey {
   type: TypeQuestion;
   question: string;
   description: string | null;
-  data: DataQuestion | null;
+  data: DataQuestion;
 }
 
 export type TypeQuestion = 'select' | 'checkbox' | 'radio' | 'text';
 
 export interface DataQuestion {
   multiple?: boolean;
-  options: OptionsDataQuestion[];
+  options: OptionsDataQuestion[] | [];
 }
 
 export interface OptionsDataQuestion {

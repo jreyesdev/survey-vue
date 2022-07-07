@@ -153,7 +153,10 @@
             </button>
             <!--/ Add new question -->
           </h3>
-          <div v-if="!model.questions.length" class="text-center text-gray-600">
+          <div
+            v-if="!model.questions || !model.questions.length"
+            class="text-center text-gray-600"
+          >
             You don't have any questions created
           </div>
           <div v-for="(question, index) in model.questions" :key="question.id">
