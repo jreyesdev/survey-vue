@@ -1,5 +1,5 @@
 export interface QuestionSurvey {
-  id: number;
+  id: number | string;
   type: TypeQuestion;
   question: string;
   description: string | null;
