@@ -23,3 +23,7 @@ export interface Survey {
 }
 
 export type TypeSurvey = 'draft' | 'active' | boolean;
+
+export interface ResponseSurveys {
+  data: Survey[];
+}

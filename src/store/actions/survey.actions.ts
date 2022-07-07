@@ -6,21 +6,25 @@ import { Survey } from '../../interfaces/SurveyInterface';
 const actionSurvey: ActionTree<StoreApp, StoreApp> = {
   /**
    * Actualiza o crea survey
-   * @param param0
+   * @param commit
    * @param survey
    * @returns {Promise<Survey>}
    */
   async saveSurvey({ commit }, survey: Survey): Promise<Survey> {
     try {
       if (survey.id) {
-        const { data } = await axiosClient.put(`/surveys/${survey.id}`, survey);
+        const { data } = await axiosClient.put<Survey>(
+          `/surveys/${survey.id}`,
+          survey
+        );
+        console.log('updateSurvey', data);
         commit('updateSurvey', data);
         return data;
       } else {
-        const { data } = await axiosClient.post('/surveys', survey);
+        const { data } = await axiosClient.post<Survey>('/surveys', survey);
         console.log('saveee', data);
-        commit('saveSurvey', data.data);
-        return data.data;
+        commit('saveSurvey', data);
+        return data;
       }
     } catch (e) {
       throw e;
