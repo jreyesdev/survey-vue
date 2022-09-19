@@ -4,6 +4,7 @@ import Auth from '../components/layouts/Auth.vue';
 import Dashboard from '../views/Dashboard.vue';
 import Layout from '../components/layouts/Layout.vue';
 import Login from '../views/Login.vue';
+import NotFoundVue from '../views/NotFound.vue';
 import Register from '../views/Register.vue';
 import Surveys from '../views/Surveys.vue';
 import SurveyView from '../views/SurveyView.vue';
@@ -40,6 +41,11 @@ const routes: RouteRecordRaw[] = [
         component: Register,
       },
     ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: Layout,
+    children: [{ path: '/:pathMatch(.*)*', component: NotFoundVue }],
   },
 ];
 
