@@ -1,6 +1,7 @@
 import { MutationTree } from 'vuex';
-import { StoreApp } from '..';
+
 import { Survey } from '../../interfaces/SurveyInterface';
+import { StoreApp } from '../state';
 
 const surveyMutation: MutationTree<StoreApp> = {
   saveSurvey: (s, survey: Survey) => {

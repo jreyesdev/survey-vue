@@ -1,6 +1,7 @@
 import { ActionTree } from 'vuex';
-import { StoreApp } from '..';
 import axiosClient from '../../axios';
+
+import { StoreApp } from '../state';
 import {
   ResponseAuthUser,
   UserFormLogin,

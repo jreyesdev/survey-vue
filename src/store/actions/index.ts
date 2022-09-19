@@ -1,5 +1,5 @@
 import { ActionTree } from 'vuex';
-import { StoreApp } from '..';
+import { StoreApp } from '../state';
 import actionAuth from './auth.actions';
 import actionSurvey from './survey.actions';
 

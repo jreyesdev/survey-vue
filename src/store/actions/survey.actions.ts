@@ -1,7 +1,8 @@
 import { ActionTree } from 'vuex';
-import { StoreApp } from '..';
 import axiosClient from '../../axios';
+
 import { Survey } from '../../interfaces/SurveyInterface';
+import { StoreApp } from '../state';
 
 const actionSurvey: ActionTree<StoreApp, StoreApp> = {
   /**

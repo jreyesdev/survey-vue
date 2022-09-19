@@ -1,6 +1,7 @@
 import { MutationTree } from 'vuex';
-import { StoreApp } from '..';
+
 import { ResponseAuthUser } from '../../interfaces/UserInterface';
+import { StoreApp } from '../state';
 
 const authMutation: MutationTree<StoreApp> = {
   logout: (s) => {

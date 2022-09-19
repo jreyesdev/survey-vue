@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex';
-import { StoreApp } from '..';
+import { StoreApp } from '../state';
 import authMutation from './auth.mutation';
 import surveyMutation from './survey.mutation';
 
