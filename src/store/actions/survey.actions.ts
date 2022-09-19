@@ -18,12 +18,10 @@ const actionSurvey: ActionTree<StoreApp, StoreApp> = {
           `/surveys/${survey.id}`,
           survey
         );
-        console.log('updateSurvey', data);
         commit('updateSurvey', data);
         return data;
       } else {
         const { data } = await axiosClient.post<Survey>('/surveys', survey);
-        console.log('saveee', data);
         commit('saveSurvey', data);
         return data;
       }

@@ -50,7 +50,7 @@ export default defineComponent({
 
     function typeChange() {
       if (shouldHaveOptions()) {
-        setOptions(getOptions() || []);
+        setOptions(getOptions());
       }
       dataChange();
     }
@@ -65,6 +65,7 @@ export default defineComponent({
     }
 
     function addQuestion() {
+      console.log(props);
       emit('addQuestion', (props.index as number) + 1);
     }
 

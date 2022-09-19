@@ -41,7 +41,9 @@ export default defineComponent({
         type: 'text',
         question: '',
         description: null,
-        data: null,
+        data: {
+          options: [],
+        },
       };
       model.value.questions?.splice(index, 0, newQuestion);
     }
@@ -73,7 +75,9 @@ export default defineComponent({
       try {
         let action = model.value.id ? 'updated' : 'created';
 
-        const { id } = await store.dispatch('saveSurvey', { ...model.value });
+        const { id }: Survey = await store.dispatch('saveSurvey', {
+          ...model.value,
+        });
         // store.commit('notify', {
         //   type: 'success',
         //   message: 'The survey was successfully ' + action,
@@ -87,6 +91,9 @@ export default defineComponent({
       }
     }
 
+    /**
+     * Delete survey
+     */
     async function deleteSurvey() {
       if (
         confirm(
